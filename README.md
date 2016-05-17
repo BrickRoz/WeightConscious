@@ -1,2 +1,2 @@
-# WeightConscious
-Monitoring System
+README
+This APP is to help people and groups monitor their weight.

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<meta charset = "UTF-8">
+		<title>Weight Conscious Tracker Project</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" type="text/css" href="main.css" />		
+
+<!--firebase script-->	
+		<script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+</head>
+
+<body>
+
+<!--select which entry type to enter info on-->
+<div class="container">
+	<h1>Weight Conscious Tracker<span class="glyphicon glyphicon-cutlery"></span></h1>
+  <div id="par1" class="col-sm-12">
+	<!--Level 1: col-sm-9-->
+	<p id="what" style="padding-bottom: 40px;">Weight Conscious Tracker is designed to assist individuals, friends, families or weight watching groups in tracking individual progresses as they challenge themselves and/or others. Profiles for an adult and child will be entered in the appropiate form. The information will be stored under the person's name. The APP will maintain the data for height, age and weight. Age and weight will update with new entries for both; however, height for the adult will remain the same. </p>
+  </div><!--end par1-->
+
+<!--Start of the form selections-->
+	<div class="row">
+		<div class="container2">
+	    <div id="adult" class="col-sm-6">      	
+	      <!--Level 2: 1st col-sm-6-->
+	      <h2>Adult</h2>
+	      <p>The Weight Conscious Tracker feature for the adult will store their information in a database and display changes to their age, and weight as they continue to participate.</p></br />
+			<!--********adult form processing**********-->
+			<button id="adultBtn" type="onclick">Adult Infomation</button><br /><br />
+
+<!--Form for adult info-->
+			<div id="formAdult">
+				<p>Scroll down to search if the person is in the database</p>
+				<div class="form-adult">
+				    <label for="inputFirstA">First Name</label><br />
+				    <input type="inputFirstA" class="form-controlAdult" id="inputFirstA" placeholder="First Name">
+				  </div>
+				  <div class="form-adult">
+				    <label for="inputLastA">Last Name</label><br />
+				    <input type="inputLastA" class="form-controlAdult" id="inputLastA" placeholder="Last Name">
+				  </div>
+				  <div id="heightA" class="form-adult">
+				    <label  for="inputHeightA">Height</label><br />
+				    <input type="inputHeightA" class="form-controlAdult" id="inputHeightA" placeholder="Height">
+				  </div>
+				  <div id="ageA" class="form-adult">
+				    <label  for="inputAgeA">Age</label><br />
+				    <input type="inputAgeA" class="form-controlAdult" id="inputAgeA" placeholder="Age">
+				  </div>
+				  <div id="weightA" class="form-adult">
+				    <label for="inputWeightA">Weight</label><br />
+				    <input type="inputWeightA" class="form-controlAdult" id="inputWeightA" placeholder="Weight">
+				  </div>				  				 
+
+<!--Button to submit adult info-->
+				  <div id="adultBtnSet">
+				  	<button type="submit" id="submitAdult" class="btn btn-default">Submit</button>
+				  	<button type="button" onclick="resetA()" id="resetA" class="btn btn-default">Reset</button>
+				  	<button type="button" onclick="searchFormABtn" id="searchFormABtn" class="btn btn-default">Search Form</button>
+				  	<button type="button" onclick="closeAdult" id="closeAdult" class="btn btn-default">Close Form</button>
+				  </div>
+				  				
+			</div><!--end of form div-->
+
+<!--Form to search for adult info-->
+			<div id="searchFormAS" class="searchFormAS">
+				  <div class="form-search">
+				    <label for="inputFirstAS">First Name</label><br />
+				    <input type="inputFirstAS" class="form-controlAdult" id="inputFirstAS" placeholder="First Name">
+				  </div>
+				  <div class="form-search">
+				    <label for="inputLastAS">Last Name</label><br />
+				    <input type="inputLastAS" class="form-controlAdult" id="inputLastAS" placeholder="Last Name">
+				  </div>
+				  <div id="ageA" class="form-search">
+				    <label  for="inputAgeAS">Age</label><br />
+				    <input type="inputAgeAS" class="form-controlAdult" id="inputAgeAS" placeholder="Age">
+				  </div>
+				  <div id="weightAS" class="form-search">
+				    <label for="inputWeightAS">Weight</label><br />
+				    <input type="inputWeightAS" class="form-controlAdult" id="inputWeightAS" placeholder="Weight">
+				  </div>		
+
+<!--Button to search for adult name-->				  
+				  	<button type="button" onclick="searchAdultDB" id="searchAdultDB" class="btn btn-default">Search</button>
+				  	<button type="button" onclick="resetAS()" id="resetAS" class="btn btn-default">Reset</button>
+				  	<!--<button type="submit" name="submitAUpdate" class="btn btn-default">Update</button>-->
+				  	<button type="button" onclick="closeAdultS" id="closeAdultS" class="btn btn-default">Close Form</button>
+			</div>
+			
+		</div><!--end adult col-sm-6 column-->
+	</div> <!--end of container2-->
+
+<!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&       CHILD      &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+
+	<div class="container3">
+		<div id="child" class="col-sm-6">
+	     <!--Level 2: 2nd col-sm-6-->
+	      <h2>Child</h2>
+	      <p>The Weight Conscious Tracker feature for the child will store their information in a database and display changes to their hieght, age, and weight as they grow.</p></br />
+	      	<!--********child form processing**********-->
+			<button id="childBtn" type="onclick">Child Information</button><br /><br />
+			<div id="formChild">
+<!--Form for child info-->
+				<p>Scroll down to search if the person is in the database</p>
+				  <div class="form-child">
+				    <label for="inputFirstC">First Name</label><br />
+				    <input type="inputFirstC" class="form-controlChild" id="inputFirstC" placeholder="First Name">
+				  </div>
+				  <div class="form-child">
+				    <label for="inputLastC">Last Name</label><br />
+				    <input type="inputLastC" class="form-controlChild" id="inputLastC" placeholder="Last Name">
+				  </div>
+				  <div class="form-child">
+				    <label for="inputHeightC">Height</label><br />
+				    <input type="inputHeightC" class="form-controlChild" id="inputHeightC" placeholder="Height">
+				  </div>
+				  <div class="form-child">
+				    <label for="inputAgeC">Age</label><br />
+				    <input type="inputAgeC" class="form-controlChild" id="inputAgeC" placeholder="Age">
+				  </div>
+				  <div class="form-child">
+				    <label for="inputWeightC">Weight</label><br />
+				    <input type="inputWeightC" class="form-controlChild" id="inputWeightC" placeholder="Weight">
+				  </div>				  				 
+<!--Button to submit child info-->
+				  <div id="childBtnSet">
+				  	<button type="submit" id="submitChild" class="btn btn-default">Submit</button>			  	
+				  	<button type="button" onclick="resetC()" id="resetC" class="btn btn-default">Reset</button>
+				  	<button type="button" onclick="searchFormCBtn" id="searchFormCBtn" class="btn btn-default">Search Form</button>
+				  	<button type="button" onclick="closeChild" id="closeChild" class="btn btn-default">Close Form</button>
+				  </div>				 				 
+			</div><!--end of form div-->
+
+<!--Form to search for child name-->
+			<div id="searchFormCS" class="searchFormCS">
+				  <div class="form-search">
+				    <label for="inputFirstCS">First Name</label><br />
+				    <input type="inputFirstCS" class="form-controlChild" id="inputFirstCS" placeholder="First Name">
+				  </div>
+				  <div class="form-search">
+				    <label for="inputLastCS">Last Name</label><br />
+				    <input type="inputLastCS" class="form-controlChild" id="inputLastCS" placeholder="Last Name">
+				  </div>
+				  <div class="form-search">
+				    <label for="inputHeightCS">Height</label><br />
+				    <input type="inputHeightCS" class="form-controlChild" id="inputHeightCS" placeholder="Height">
+				  </div>
+				  <div class="form-search">
+				    <label for="inputAgeCS">Age</label><br />
+				    <input type="inputAgeCS" class="form-controlChild" id="inputAgeCS" placeholder="Age">
+				  </div>
+				  <div class="form-search">
+				    <label for="inputWeightCS">Weight</label><br />
+				    <input type="inputWeightCS" class="form-controlChild" id="inputWeightCS" placeholder="Weight">
+				  </div>				  		
+
+<!--Button te start search-->
+				  	<button type="button" onclick="searchChildDB" id="searchChildDB" class="btn btn-default">Search</button>
+				  	<button type="button" onclick="resetCS()" id="resetCS" class="btn btn-default">Reset</button>
+				  	<!--<button type="submit" name="submitCUpdate" class="btn btn-default">Update</button>-->
+				  	<button type="button" onclick="closeChildS" id="closeChildS" class="btn btn-default">Close Form</button>
+			</div>
+		</div><!--end child col-sm-6 column-->
+	</div> <!--end of container3-->
+</div><!--end row 1-->
+
+<!-- This is the beginning of the footer -->
+	 <div id="footer" class="col-sm-3 hidden-sm hidden-xs">	<!--The footer will be hidden when page gets small--> 	
+     <!-- This is the beginning of the footer -->
+      <footer class="container4 text-center">
+		<p><div style="line-height:8px; margin-left:275px; font-size: 0.875em;">Copyright &copy Rosalind Williams-Scott, Weight Conscious Tracker</div></p>
+		<p><div style="line-height:8px; margin-left:280px;font-size: 0.875em;">Feel free to share the information in this APP with your friends.</div></p>
+      </footer><!-- End of Footer Div-->
+	 </div>
+	</div><!--end row 2>-->
+</div><!--end container -->
+
+	<script type="text/javascript" src="main.js"></script>
+	
+</body>
+</html>
